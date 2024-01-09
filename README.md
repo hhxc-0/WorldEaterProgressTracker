@@ -2,7 +2,7 @@
   
 # World Eater Progress Tracker
 
-English | [简体中文](/README_CN.md)
+English | [简体中文](/README_zh.md)
 
 This is a simple [Minecraft Console Client (MCC)](https://mccteam.github.io/) script that allows players on Minecraft redstone servers to monitor the progress of world eaters without needing to enter the game.
 It uses the `!!vris` command provided by the [Where Is](https://github.com/Lazy-Bing-Server/WhereIs-MCDR) plugin of [MCDReforged](https://github.com/Fallen-Breath/MCDReforged) to track the location of an AFK player or bot attached to the world eater flying machines.
