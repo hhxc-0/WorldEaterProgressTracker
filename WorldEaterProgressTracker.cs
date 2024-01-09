@@ -15,17 +15,17 @@ MCC.LoadBot(new ServicesChatBot());
 class ServicesChatBot : ChatBot
 {
 	//condition constants
-	const bool debugMode = false;
-	const bool autoReconnect = true;
-	const string botName = "STT";
-	const int worldDevourerStartPos = 478;
-	const int worldDevourerEndPos = -1983;
-	enum WorldDevourerDirections
+	const bool debugMode = false; //Display additional informations for debug
+	const bool autoReconnect = true; //Whether try to reconnect when the connection is lost
+	const string botName = "STT"; //Name of bot you want to track
+	const int worldEaterStartPos = 478; //The minimun postion of the bot in the working axis 
+	const int worldEaterEndPos = -1983; //The maximum coordinate of the bot in the working axis
+	enum worldEaterDirections
 	{
 		xDirection,
 		zDirection
 	};
-	const WorldDevourerDirections worldDevourerDirection = WorldDevourerDirections.xDirection;
+	const worldEaterDirections worldEaterDirection = worldEaterDirections.xDirection; //Choose a working direction of world eater between x-axis and y-axis
 	const int runningRetrieveInterval = 30, stoppedRetrieveInterval = 60; //data retrieve intervals in seconds
 	const int refreshInterval = 1000; //display refresh interval in milliseconds
 
@@ -54,11 +54,11 @@ class ServicesChatBot : ChatBot
 		message = message.Remove(0, message.IndexOf(' ') + 1);
 		z = Int32.Parse(message.Substring(0, message.IndexOf(']')));
 
-		if (worldDevourerDirection == WorldDevourerDirections.xDirection)
+		if (worldEaterDirection == worldEaterDirections.xDirection)
 		{
 			pos = x;
 		}
-		else if (worldDevourerDirection == WorldDevourerDirections.zDirection)
+		else if (worldEaterDirection == worldEaterDirections.zDirection)
 		{
 			pos = z;
 		}
@@ -91,7 +91,7 @@ class ServicesChatBot : ChatBot
 	public void LoopProcessAndOutput() //process and output every time in the loop
     {
 		//Calculate the ratio of completion
-		percentage = (float)(worldDevourerStartPos - pos) / (float)(worldDevourerStartPos - worldDevourerEndPos) * (float)100;
+		percentage = (float)(worldEaterStartPos - pos) / (float)(worldEaterStartPos - worldEaterEndPos) * (float)100;
 		if (reversed)
         {
 			percentage = (float)100 - percentage;
